@@ -1,0 +1,23 @@
+{
+  "name": "crew-fleet",
+  "version": "0.1.0",
+  "description": "Cross-machine crew orchestration — SSH fan-out over the machines registry for fleet-level queries.",
+  "author": {
+    "name": "Tim Garthwaite"
+  },
+  "keywords": [
+    "crew",
+    "orchestration",
+    "fleet",
+    "multi-machine"
+  ],
+  "mcpServers": {
+    "crew-fleet": {
+      "command": "bun",
+      "args": [
+        "run",
+        "${CLAUDE_PLUGIN_ROOT}/server.ts"
+      ]
+    }
+  }
+}

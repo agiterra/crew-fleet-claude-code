@@ -1,0 +1,15 @@
+{
+  "name": "@agiterra/crew-fleet-claude-code",
+  "version": "0.1.0",
+  "description": "Claude Code adapter for crew-fleet-tools — cross-machine agent orchestration.",
+  "type": "module",
+  "dependencies": {
+    "@agiterra/crew-fleet-tools": "agiterra/crew-fleet-tools#55018faccb30b739187d4d3d3902fc2829ba7b37",
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "license": "MIT",
+  "author": "Tim Garthwaite <https://github.com/mividtim>"
+}
