@@ -2,6 +2,8 @@
 
 Cross-machine crew orchestration — SSH fan-out over the machines registry for fleet-level queries.
 
+> **Setting up two machines for the first time?** Walk through [`MULTI_MACHINE.md`](MULTI_MACHINE.md) — fresh-machine to working `fleet_move` in ~15 minutes.
+
 ## Prerequisites
 
 - `crew-claude-code` ≥ v2.4.0 installed on this machine (provides the `machines` registry table)
