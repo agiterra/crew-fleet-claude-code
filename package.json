@@ -1,10 +1,10 @@
 {
   "name": "@agiterra/crew-fleet-claude-code",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Claude Code adapter for crew-fleet-tools — cross-machine agent orchestration.",
   "type": "module",
   "dependencies": {
-    "@agiterra/crew-fleet-tools": "agiterra/crew-fleet-tools#53c63046d54da4762314f78c54e0749241fcc15b",
+    "@agiterra/crew-fleet-tools": "agiterra/crew-fleet-tools#65bd5aba53452031e8b216c7ac7d7a113cf3a7d7",
     "@modelcontextprotocol/sdk": "^1.29.0"
   },
   "devDependencies": {
