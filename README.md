@@ -1,21 +1,61 @@
-# crew-fleet-claude-code
+# crew-fleet
 
-Cross-machine crew orchestration — SSH fan-out over the machines registry for fleet-level queries.
+> Cross-machine [Crew](https://github.com/agiterra/crew-claude-code) — SSH fan-out across your registered machines so you can see and orchestrate agents wherever they're running.
 
-> **Setting up two machines for the first time?** Walk through [`MULTI_MACHINE.md`](MULTI_MACHINE.md) — fresh-machine to working `fleet_move` in ~15 minutes.
+Part of the [Agiterra Multi-Agent Toolkit (AMAT)](https://github.com/agiterra/handbook). Optional companion to `crew`.
 
-## Prerequisites
+## What this gets you
 
-- `crew-claude-code` ≥ v2.4.0 installed on this machine (provides the `machines` registry table)
-- SSH access (BatchMode=yes) to every machine listed in `machines` — typically your own SSH config with key-based auth
-- `sqlite3` available on every remote machine (it's in `/usr/bin/sqlite3` on macOS + most Linux)
+- **One command, every machine.** "Show me every agent on my fleet" runs across your home Mac, your office Linux box, your cloud VM — all in one query.
+- **No central state.** No sync daemon, no shared database — each machine's crew DB is authoritative for that machine. Fleet-level reads are SSH-fan-outs.
+- **Partial failures don't break the call.** If your cloud VM is down, you still see results for everything reachable; the unreachable machines surface as a separate list with the actual error.
+
+This is what makes "my personai dispatches engineers across machines" real. You launch Brioche on your laptop; she spawns Eclair on a GPU box and Palmier on a CI runner; you watch all three from the same dashboard.
+
+## Quick setup
+
+If you have a Claude Code agent open, say:
+
+> "Install crew-fleet and register my <other-machine> so I can see agents across all my machines."
+
+Or manually:
+
+```
+/plugin marketplace add agiterra/claude-marketplace   # one-time
+/plugin install crew-fleet@agiterra
+```
+
+### Prerequisites
+
+- `crew@agiterra` ≥ v2.4.0 already installed (provides the `machines` registry)
+- SSH key-based access (BatchMode=yes) to every machine in your registry
+- `sqlite3` on every remote machine (default install on macOS + most Linux)
 - Bun (https://bun.sh) on the machine running this plugin
 
-## Install
+### First-time multi-machine setup
+
+For a fresh-from-zero walkthrough — install crew on a second box, register it, run your first `fleet_status` — see [`MULTI_MACHINE.md`](MULTI_MACHINE.md). About 15 minutes end-to-end.
+
+## Quick example
+
+Register a remote machine via `crew`'s `machine_register`:
 
 ```
-/plugin install agiterra/crew-fleet-claude-code
+machine_register({
+  name: "home-mini",
+  ssh_host: "tim@home-mini.local",
+})
 ```
+
+Then any time you want to see your whole fleet:
+
+> "fleet_list"
+
+Returns every agent on every registered machine — across cities, networks, runtimes — in a single response.
+
+> "Run fleet_status and tell me which machines are reachable right now"
+
+Lightweight reachability probe; useful before you hand off an agent or expect cross-machine work.
 
 ## Tools / Skills
 
